@@ -1,0 +1,126 @@
+/* styles.css */
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #101418;
+  --muted: #6b7280;
+  --primary: #4f46e5;
+  --soft: #f4f6fb;
+  --gradient: linear-gradient(135deg, #6d28d9, #2563eb);
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+html[data-theme="dark"] {
+  --bg: #0b0f14;
+  --surface: #0f1520;
+  --text: #e6eaf2;
+  --muted: #9aa4b2;
+  --primary: #8b5cf6;
+  --soft: #0d1220;
+  --gradient: linear-gradient(135deg, #8b5cf6, #22d3ee);
+  --shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.text-gradient {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Navbar (glass) */
+.glass-nav {
+  backdrop-filter: saturate(180%) blur(14px);
+  background: color-mix(in oklab, var(--surface), transparent 35%);
+  border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 90%);
+}
+.navbar .nav-link { color: var(--text); opacity: .9; }
+.navbar .nav-link.active, .navbar .nav-link:hover { opacity: 1; }
+.brand-badge {
+  display: inline-grid; place-items: center;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: var(--gradient); color: #fff; font-weight: 700;
+  margin-right: .35rem;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  padding-top: 82px;
+}
+.hero-gradient {
+  position: absolute; inset: 0;
+  background: radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--primary), #fff 30%) 0%, transparent 60%),
+              radial-gradient(900px 500px at 100% 0%, color-mix(in oklab, var(--primary), #00d 10%) 0%, transparent 55%);
+  opacity: .08; pointer-events: none;
+}
+.eyebrow {
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 600; font-size: .82rem; color: var(--muted);
+}
+.hero-card {
+  position: relative; border-radius: 18px; background: var(--surface); box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.hero-card .ring {
+  position: absolute; inset: -30% -30% auto auto; width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--primary), #fff 20%), transparent 60%);
+  opacity: .15; filter: blur(6px);
+}
+.avatar {
+  width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+  background: color-mix(in oklab, var(--surface), var(--primary) 16%); font-size: 28px;
+}
+.link-muted { color: var(--text); text-decoration: none; opacity: .9; }
+.link-muted:hover { opacity: 1; }
+
+/* Sections */
+.section-pad { padding: 90px 0; }
+.section-title { font-family: "Figtree", system-ui, sans-serif; font-weight: 700; margin-bottom: 10px; }
+.text-muted { color: var(--muted) !important; }
+.bg-soft { background: var(--soft); }
+
+/* Stats / Chips */
+.about-card { background: var(--surface); }
+.stat { background: color-mix(in oklab, var(--surface), var(--primary) 6%); border-radius: 14px; padding: 18px; text-align: center; }
+.stat-value { font-weight: 800; font-size: 1.4rem; }
+.stat-label { color: var(--muted); font-size: .85rem; }
+
+.badge-chip {
+  display: inline-block; padding: .6rem .9rem; border-radius: 999px; font-weight: 600;
+  background: color-mix(in oklab, var(--surface), var(--primary) 6%); color: var(--text); border: 1px dashed color-mix(in oklab, var(--text), transparent 70%);
+}
+
+/* Cards */
+.card { background: var(--surface); color: var(--text); border: 1px solid color-mix(in oklab, var(--text), transparent 92%); }
+.project-card img { object-fit: cover; height: 190px; }
+
+/* Footer */
+footer { background: color-mix(in oklab, var(--surface), var(--primary) 4%); }
+
+/* Buttons / Icons */
+.btn-primary { background: var(--primary); border-color: var(--primary); }
+.btn-outline-secondary { color: var(--text); border-color: color-mix(in oklab, var(--text), transparent 70%); }
+.btn-icon {
+  width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px;
+  background: color-mix(in oklab, var(--surface), var(--primary) 6%);
+  color: var(--text); text-decoration: none;
+}
+.btn-icon:hover { transform: translateY(-2px); transition: .2s ease; }
+
+/* Reveal-on-scroll */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+/* Back to top */
+.back-to-top { border-radius: 999px; }
+
+/* Improve focus outlines */
+:focus-visible { outline: 2px dashed color-mix(in oklab, var(--primary), #fff 40%); outline-offset: 2px; }
